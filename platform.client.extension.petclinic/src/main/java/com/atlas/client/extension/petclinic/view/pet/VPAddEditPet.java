@@ -75,6 +75,12 @@ public class VPAddEditPet {
 	    
 		@Section
 	    private VSAddEditPet vsAddEditPet;
+		
+		/* This section is added to test the scenario of CSS Class being applied to the section appropriately
+		 * based on the visible conditional.  And this will be tested in our end-end tests. 
+		 */
+		@Section(cssClass="memberBorderSection")
+	    private EmptySection emptySection;	    
 	    
 	}
 	
@@ -118,6 +124,7 @@ public class VPAddEditPet {
 			@ValuesConditional.Condition(when="state == 'Cat'", then = @Values(value=CatCategory.class))
 		})
 		@VisibleConditional(targetPath = { "../category" }, when = "state != 'Horse'")
+		@VisibleConditional(targetPath = { "../../../emptySection" }, when = "state != 'Cat'")
 		@EnableConditional(targetPath = { "../category" }, when = "state != 'Parrot'")
 		@LabelConditional(targetPath = "/../name", condition = {
 			@LabelConditional.Condition(when = "state != null", then = @Label("<!/!>'s Name"))
@@ -169,5 +176,11 @@ public class VPAddEditPet {
 		@Label("Cancel")
 		@Button(style = Button.Style.PLAIN, type = Button.Type.reset, browserBack = true)
 		private String cancel;
+	}
+	
+	@Model
+	@Getter @Setter
+	public static class EmptySection {
+		
 	}
 }
