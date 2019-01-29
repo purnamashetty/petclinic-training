@@ -33,7 +33,8 @@ import lombok.Setter;
  *
  */
 @Type(Note.class)
-@Model @Getter @Setter
+@Model
+@Getter @Setter
 public class NoteLineItem {
 
 	@Label("Note Type")
@@ -54,10 +55,10 @@ public class NoteLineItem {
 		
 		@Label("View Note")
 		@Link
-		@Config(url = "/vpNotes/vtNotes/vmAddNote/vsAddNote/vfAddNote/_replace?rawPayload=<!json(/../../.m)!>")
-		@Config(url = "/vpNotes/vtNotes/vmAddNote/vsAddNote/vfAddNote/mode/_process?fn=_set&value=readonly")
-		@Config(url = "/vpNotes/vtNotes/vmAddNote/vsAddNote/vfAddNote/noteType/_process?fn=_set&value=general")
-		@Config(url = "/vpNotes/vtNotes/vmAddNote/_process?fn=_setByRule&rule=togglemodal")
+		@Config(url = "/vpNotes/vtNotes/vmNotes/mode/_process?fn=_set&value=readonly")
+		@Config(url = "/vpNotes/vtNotes/vmNotes/vsMain/vfViewNote/noteType/_process?fn=_set&value=general")
+		@Config(url = "/vpNotes/vtNotes/vmNotes/vsMain/vfViewNote/_replace?rawPayload=<!json(/../../.m)!>")
+		@Config(url = "/vpNotes/vtNotes/vmNotes/_process?fn=_setByRule&rule=togglemodal")
 		private String view;
 		
 		@Label("Delete Note")

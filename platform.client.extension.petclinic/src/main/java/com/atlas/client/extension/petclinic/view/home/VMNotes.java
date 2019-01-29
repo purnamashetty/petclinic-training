@@ -29,6 +29,7 @@ import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Fonts;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Form;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.RichText;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.TextBox;
 import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
 import com.antheminc.oss.nimbus.domain.defn.extension.EnableConditional;
 import com.antheminc.oss.nimbus.domain.defn.extension.ParamContext;
@@ -43,29 +44,62 @@ import lombok.Setter;
  * @author Tony Lopez
  *
  */
-@Model @Getter @Setter
-public class VMAddNote {
+@Model
+@Getter @Setter
+public class VMNotes {
 
-	@Section
-	private VSAddNote vsAddNote;
+	@VisibleConditional(when = "state != 'readonly'", targetPath = "/../vsMain/vfAddNote")
+	@VisibleConditional(when = "state == 'readonly'", targetPath = "/../vsMain/vfViewNote")
+	private String mode;
 	
-	@Model @Getter@Setter
-	public static class VSAddNote{
+	@Section
+	private VSMain vsMain;
+	
+	@Model
+	@Getter @Setter
+	public static class VSMain{
 		
 		@Form
 		@Path(linked = false)
 		private VFAddNote vfAddNote;
 		
+		@Form
+		@Path(linked = false)
+		private VFViewNote vfViewNote;
+		
 	}
 	
 	@MapsTo.Type(Note.class)
-	@Getter
-	@Setter
+	@Getter @Setter
 	public static class VFAddNote{
 		
-		@EnableConditional(when = "state != 'readonly'", targetPath = "/../noteDescription")
-		@VisibleConditional(when = "state != 'readonly'", targetPath = "/../vbgDefault/submit")
-		private String mode;
+		@Label("Note Type")
+		@ComboBox
+		@Values(NoteTypes.class)
+		@ParamContext(enabled = false, visible = true)
+		@Path
+		private String noteType;
+		
+		@Label("Type DISABLE to disable OR type HIDE to hide the noteDescription field")
+		@TextBox(postEventOnChange = true)
+		@VisibleConditional(when = "state != 'HIDE'", targetPath = "/../noteDescription")
+		@EnableConditional(when = "state != 'DISABLE'", targetPath = "/../noteDescription")
+		private String checker;
+		
+		@Label("Note Description")
+		@NotNull
+		@RichText(postEventOnChange = true)
+		@Fonts({ "Arial", "Serif", "Monospace" })
+		@Path
+		private String noteDescription;
+		
+		@ButtonGroup
+		private VBGAddNote vbg;
+	}
+	
+	@MapsTo.Type(Note.class)
+	@Getter @Setter
+	public static class VFViewNote {
 		
 		@Label("Note Type")
 		@ComboBox
@@ -76,17 +110,16 @@ public class VMAddNote {
 		
 		@Label("Note Description")
 		@NotNull
-		@RichText(postEventOnChange = true)
-		@Fonts({ "Arial", "Serif", "Monospace" })
+		@RichText(readOnly = true)
 		@Path
 		private String noteDescription;
 		
 		@ButtonGroup
-		private DefaultButtonGroup vbgDefault;
+		private VBGViewNote vbg;
 	}
 	
 	@Model @Getter @Setter
-	public static class DefaultButtonGroup {
+	public static class VBGAddNote {
 		
 		@Label(value="Submit")
 		@Button(style = Button.Style.PRIMARY, type = Button.Type.submit)
@@ -99,6 +132,14 @@ public class VMAddNote {
 		@Button(style = Button.Style.SECONDARY, type = Button.Type.reset)
 		@Config(url = "<!#this!>/../../../../_process?fn=_setByRule&rule=togglemodal")
 		private String back;
+	}
+	
+	@Model @Getter @Setter
+	public static class VBGViewNote {
 		
+		@Label(value = "Back")
+		@Button(style = Button.Style.SECONDARY, type = Button.Type.reset)
+		@Config(url = "<!#this!>/../../../../_process?fn=_setByRule&rule=togglemodal")
+		private String back;
 	}
 }
