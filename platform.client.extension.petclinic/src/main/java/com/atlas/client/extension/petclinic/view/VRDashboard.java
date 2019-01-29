@@ -18,6 +18,7 @@ import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Tile;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Tile.Size;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ViewRoot;
 import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
+import com.atlas.client.extension.petclinic.view.demos.VPChartDemo;
 import com.atlas.client.extension.petclinic.view.demos.VPTreegridDemo;
 import com.atlas.client.extension.petclinic.view.home.VPNotes;
 import com.atlas.client.extension.petclinic.view.owner.VisitLineItem;
@@ -49,6 +50,10 @@ public class VRDashboard {
 	@Label("TreeGrid Demo")
 	@Page
 	private VPTreegridDemo vpTreegridDemo;
+	
+	@Label("Charts Demo")
+	@Page
+	private VPChartDemo vpChartDemo;
 	
 	@Label("Pets")
 	@Page

@@ -47,6 +47,9 @@ public class VSHomeLeftBar {
 	@MenuLink(url="petclinicdashboard/vpTreegridDemo")
 	private String treegrid;
 	
+	@Label("Charts Demo")
+	@MenuLink(url="petclinicdashboard/vpChartDemo")
+	private String chartsdemo;
 	
 	
 	@Model
