@@ -52,6 +52,14 @@ public class NoteLineItem {
 	@Model @Getter @Setter
 	public static class VLMDefault {
 		
+		@Label("View Note")
+		@Link
+		@Config(url = "/vpNotes/vtNotes/vmAddNote/vsAddNote/vfAddNote/_replace?rawPayload=<!json(/../../.m)!>")
+		@Config(url = "/vpNotes/vtNotes/vmAddNote/vsAddNote/vfAddNote/mode/_process?fn=_set&value=readonly")
+		@Config(url = "/vpNotes/vtNotes/vmAddNote/vsAddNote/vfAddNote/noteType/_process?fn=_set&value=general")
+		@Config(url = "/vpNotes/vtNotes/vmAddNote/_process?fn=_setByRule&rule=togglemodal")
+		private String view;
+		
 		@Label("Delete Note")
 		@Link
 		@Config(url = "<!#this!>/../../.m/_delete")

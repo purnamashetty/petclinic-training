@@ -25,11 +25,14 @@ import com.antheminc.oss.nimbus.domain.defn.Model.Param.Values;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Button;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ButtonGroup;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ComboBox;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Fonts;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Form;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.RichText;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section;
-import com.antheminc.oss.nimbus.domain.defn.ViewConfig.TextArea;
 import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
+import com.antheminc.oss.nimbus.domain.defn.extension.EnableConditional;
 import com.antheminc.oss.nimbus.domain.defn.extension.ParamContext;
+import com.antheminc.oss.nimbus.domain.defn.extension.VisibleConditional;
 import com.atlas.client.extension.petclinic.core.CodeValueTypes.NoteTypes;
 import com.atlas.client.extension.petclinic.core.Note;
 
@@ -60,6 +63,10 @@ public class VMAddNote {
 	@Setter
 	public static class VFAddNote{
 		
+		@EnableConditional(when = "state != 'readonly'", targetPath = "/../noteDescription")
+		@VisibleConditional(when = "state != 'readonly'", targetPath = "/../vbgDefault/submit")
+		private String mode;
+		
 		@Label("Note Type")
 		@ComboBox
 		@Values(NoteTypes.class)
@@ -69,7 +76,8 @@ public class VMAddNote {
 		
 		@Label("Note Description")
 		@NotNull
-		@TextArea
+		@RichText(postEventOnChange = true)
+		@Fonts({ "Arial", "Serif", "Monospace" })
 		@Path
 		private String noteDescription;
 		
@@ -82,8 +90,8 @@ public class VMAddNote {
 		
 		@Label(value="Submit")
 		@Button(style = Button.Style.PRIMARY, type = Button.Type.submit)
-		@Config(url = "<!#this!>/../../../vfAddNote/_update")
-		@Config(url = "/p/notes/_new?fn=_initEntity&target=/noteDescription&json=\"<!/../noteDescription!>\"&target=/noteType&json=\"<!/../noteType!>\"")
+		@Config(url = "<!#this!>/../../../vfAddNote/_update") 
+		@Config(url = "/p/notes/_new?fn=_initEntity&target=/noteDescription&json=<!json(/../noteDescription)!>&target=/noteType&json=\"<!/../noteType!>\"")
 		@Config(url = "<!#this!>/../../../../_process?fn=_setByRule&rule=togglemodal")
 		private String submit;
 		
