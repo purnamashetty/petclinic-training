@@ -36,10 +36,10 @@ public class VeterinarianLineItem {
 	@Path
 	private String numberOfPets;
 	
-	@Label("Phone Number")
-	@FieldValue
-	@Path
-	private String phoneNumber;
+//	@Label("Phone Number")
+//	@FieldValue
+//	@Path
+//	private String phoneNumber;
 	
 	@Label("Edit Vet")
     @Link
