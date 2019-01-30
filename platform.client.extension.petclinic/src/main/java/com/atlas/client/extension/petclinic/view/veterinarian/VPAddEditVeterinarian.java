@@ -12,7 +12,7 @@ import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ButtonGroup;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ComboBox;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Form;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Header;
-import com.antheminc.oss.nimbus.domain.defn.ViewConfig.InputMask;
+//import com.antheminc.oss.nimbus.domain.defn.ViewConfig.InputMask;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.TextBox;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Tile;
@@ -65,11 +65,11 @@ public class VPAddEditVeterinarian {
 		private String lastName;
 		
 		
-		@InputMask(mask="(999) 999-9999")
-		@MapsTo.Path
-		@Label("Phone Number")
-		
-		private String phoneNumber ;
+//		@InputMask(mask="(999) 999-9999")
+//		@MapsTo.Path
+//		@Label("Phone Number")
+//		
+//		private String phoneNumber ;
 		
 		
 //		@TextBox(hidden=true) @MapsTo.Path

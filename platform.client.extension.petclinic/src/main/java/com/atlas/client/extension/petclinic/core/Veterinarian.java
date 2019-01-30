@@ -34,7 +34,7 @@ public class Veterinarian extends AbstractEntity.IdLong {
 	
 	private String veterinarian;
 	
-	private String phoneNumber;
+//	private String phoneNumber;
 	
 	private String speciality;
 	
