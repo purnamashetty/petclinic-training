@@ -248,13 +248,14 @@ public class PetAssessment_Body {
 			@Radio(postEventOnChange = true)
 //			@NotNull
 			@Model.Param.Values(value = YNType.class)
-			@VisibleConditional(when = "state == 'Yes'", targetPath = "/../q9_b")
+//			@VisibleConditional(when = "state == 'Yes'", targetPath = "/../q9_b")
 			@Label(value="9. Do you have any relevant file/s to upload? (only in .png or .pdf formats)")
 			private String q9_a;
 
+//			@FileUpload(type=".png,.pdf", url="http://localhost:8080/test")
 			@FileUpload(type=".png,.pdf")
 			@Label(value="Please upload the relevant file/s")
-			private String q9_b;
+			private String fileControl;
 		}
 		
 		// Radio

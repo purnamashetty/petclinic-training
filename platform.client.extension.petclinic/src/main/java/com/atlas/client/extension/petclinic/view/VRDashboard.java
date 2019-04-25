@@ -36,7 +36,7 @@ import lombok.Setter;
 @Domain(value = "petclinicdashboard", includeListeners = { ListenerType.websocket })
 @Repo(value = Repo.Database.rep_none, cache = Repo.Cache.rep_device)
 @Getter @Setter
-@ViewRoot(layout = "")
+@ViewRoot(layout = "home")
 public class VRDashboard {
 
 	@Label("Home")

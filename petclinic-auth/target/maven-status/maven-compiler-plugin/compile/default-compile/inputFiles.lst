@@ -1,0 +1,9 @@
+/Users/AF73944/petclinic-1.2.x/petclinic-training/petclinic-auth/src/main/java/com/atlas/petclinic/auth/config/ClientUserDetailsImpl.java
+/Users/AF73944/petclinic-1.2.x/petclinic-training/petclinic-auth/src/main/java/com/atlas/petclininc/auth/utils/JWTAuthTokenUtil.java
+/Users/AF73944/petclinic-1.2.x/petclinic-training/petclinic-auth/src/main/java/com/atlas/petclininc/auth/utils/JWTAuthConstants.java
+/Users/AF73944/petclinic-1.2.x/petclinic-training/petclinic-auth/src/main/java/com/atlas/petclinic/auth/config/JWTAuthenticationFilter.java
+/Users/AF73944/petclinic-1.2.x/petclinic-training/petclinic-auth/src/main/java/com/atlas/petclinic/ApplicationBeanResolver.java
+/Users/AF73944/petclinic-1.2.x/petclinic-training/petclinic-auth/src/main/java/com/atlas/petclinic/auth/config/ClientUserDetailsServiceImpl.java
+/Users/AF73944/petclinic-1.2.x/petclinic-training/petclinic-auth/src/main/java/com/atlas/petclinic/PetclinicAuthApplication.java
+/Users/AF73944/petclinic-1.2.x/petclinic-training/petclinic-auth/src/main/java/com/atlas/petclinic/auth/controller/AuthController.java
+/Users/AF73944/petclinic-1.2.x/petclinic-training/petclinic-auth/src/main/java/com/atlas/petclinic/auth/config/WebSecurityConfig.java

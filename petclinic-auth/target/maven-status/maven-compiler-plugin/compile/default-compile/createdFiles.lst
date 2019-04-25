@@ -1,0 +1,12 @@
+com/atlas/petclinic/auth/controller/AuthController$RedirectHandle.class
+com/atlas/petclinic/PetclinicAuthApplication.class
+com/atlas/petclinic/auth/config/ClientUserDetailsImpl.class
+com/atlas/petclinic/auth/config/JWTAuthenticationFilter.class
+com/atlas/petclinic/auth/controller/AuthController.class
+com/atlas/petclinic/auth/controller/AuthController$SelectedClientEntity.class
+com/atlas/petclininc/auth/utils/JWTAuthConstants.class
+com/atlas/petclinic/auth/controller/AuthController$LoginUser.class
+com/atlas/petclinic/ApplicationBeanResolver.class
+com/atlas/petclinic/auth/config/ClientUserDetailsServiceImpl.class
+com/atlas/petclinic/auth/config/WebSecurityConfig.class
+com/atlas/petclininc/auth/utils/JWTAuthTokenUtil.class

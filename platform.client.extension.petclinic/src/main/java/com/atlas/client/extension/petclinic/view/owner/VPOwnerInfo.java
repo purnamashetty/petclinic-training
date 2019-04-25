@@ -193,7 +193,7 @@ public class VPOwnerInfo {
 		private String addPet;		
 
 		@Label("Pets")
-		@Grid(onLoad = true, pageSize = "7")
+		@Grid(onLoad = true, pageSize = "7", editRow = true, addRow = true)
 		@Path(linked = false)
 		@Config(url = "<!#this!>/.m/_process?fn=_set&url=/p/pet/_search?fn=query&where=pet.ownerId.eq(<!/../.m/id!>)")
 		private List<PetLineItem> pets;

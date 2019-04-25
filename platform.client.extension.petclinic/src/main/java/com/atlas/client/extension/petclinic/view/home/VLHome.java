@@ -9,10 +9,13 @@ import com.antheminc.oss.nimbus.domain.defn.Model;
 import com.antheminc.oss.nimbus.domain.defn.Repo;
 import com.antheminc.oss.nimbus.domain.defn.Repo.Cache;
 import com.antheminc.oss.nimbus.domain.defn.Repo.Database;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ActionTray;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Button;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.MenuPanel;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Page;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section.Type;
+import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -37,5 +40,20 @@ public class VLHome {
 		
 		@MenuPanel
 		private VSHomeLeftBar vsHomeLeftBar;
+		
+		@ActionTray
+		private VSActionTray vsActionTray;
+		
+		@Model @Getter @Setter
+		public static class VSActionTray {
+
+
+		@Button(imgSrc = "fa-id-card", cssClass = "icon btn btn-icon mr-0", title = "Record a Contact")
+		@Label(value = " ")
+		private String contactRecord;
+
+		}
 	}
+	
+	
 }

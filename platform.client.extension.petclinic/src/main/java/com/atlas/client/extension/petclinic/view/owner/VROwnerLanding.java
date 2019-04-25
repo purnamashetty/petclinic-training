@@ -21,6 +21,8 @@ import com.antheminc.oss.nimbus.domain.defn.ViewConfig.TextBox;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Tile;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ViewRoot;
 import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
+import com.antheminc.oss.nimbus.domain.defn.extension.LabelConditional;
+import com.antheminc.oss.nimbus.domain.defn.extension.LabelConditional.Condition;
 import com.atlas.client.extension.petclinic.core.Owner;
 
 import lombok.Getter;
@@ -70,7 +72,8 @@ public class VROwnerLanding {
  
     	@Label("First Name")
     	@NotNull
-        @TextBox
+        @TextBox(postEventOnChange=true)
+    	@LabelConditional(condition = { @Condition(when="state=='CHANGED'", then=@Label("2nd last name")) }, targetPath = "/../lastName")
         @Path
         private String firstName;
         
@@ -93,7 +96,7 @@ public class VROwnerLanding {
         private String search;
  
         @Label("Add Owner")
-        @Button(style = Button.Style.SECONDARY)
+		@Button(style = Button.Style.PRINT)
         @Config(url = "/p/ownerview/_new")
         private String addOwner;
     }
@@ -102,9 +105,13 @@ public class VROwnerLanding {
     public static class VSOwners  {
  
     	@Label("Owners")
-        @Grid(onLoad = true, pageSize = "5",  rowSelection = false, expandableRows = true)
+        @Grid(onLoad = true, pageSize = "5",  rowSelection = false, expandableRows = true, editRow = true, addRow = true)
     	@Path(linked = false)
     	@Config(url="<!#this!>/.m/_process?fn=_set&url=/p/owner/_search?fn=example")
         private List<OwnerLineItem> owners;
+    	
+    	@Config(url = "/p/owner/_new")
+    	@Config(url="<!#this!>/../owners/.m/_process?fn=_set&url=/p/owner/_search?fn=query")
+    	private String _action_onAdd;
     }
 }
